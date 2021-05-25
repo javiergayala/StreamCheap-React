@@ -32,36 +32,49 @@ const buttonsWithName = Object.keys(ClientConfig.buttons).map(function(key) {
   return button;
 });
 
-const buttons = buttonsWithName.map(item =>
-  <div class={item.colClass}>
-      <button type="button" class={item.class}>
-          <FontAwesomeIcon icon={[item.iconCat, item.iconName]} size={item.iconSize} />
-      </button>
-      <div class={item.txtClass}>{item.buttonName}</div>
-  </div>
-);
+// const buttons = buttonsWithName.map(item =>
+//   <div class={item.colClass}>
+//       <button type="button" key={item.name} class={item.class}>
+//           <FontAwesomeIcon icon={[item.iconCat, item.iconName]} size={item.iconSize} />
+//       </button>
+//       <div class={item.txtClass}>{item.buttonName}</div>
+//   </div>
+// );
+
+
 
 class CherryBtn extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      iconCat: props.value.iconCat,
-      iconName: props.value.iconName,
-      iconSize: props.value.iconSize,
-      buttonName: props.value.buttonName,
-    };
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.input = React.createRef();
+    this.handleClick = this.handleClick.bind(this);
   }
-  render () {
+
+  handleClick() {
+    console.log('clicked ' + this.props.item.name);
+  }
+
+  handleSubmit(event) {
+    alert('A name was submitted: ' + this.input.current.value);
+    event.preventDefault();
+  }
+
+  render (props) {
     return (
-        <div class="col border bg-primary">
-            <button type="button" class="btn btn-primary">
-                <FontAwesomeIcon icon={[this.state.iconCat, this.state.iconName]} size={this.state.iconSize} />
-            </button>
-            <div class="d-block text-white">{this.state.buttonName}</div>
-        </div>
+        <div class={this.props.item.colClass} key={this.props.item.name}>
+        <button type="button" class={this.props.item.class} onClick={this.handleClick}>
+            <FontAwesomeIcon icon={[this.props.item.iconCat, this.props.item.iconName]} size={this.props.item.iconSize} />
+        </button>
+        <div class={this.props.item.txtClass} key={'btnTxt-' + this.props.item.name}>{this.props.item.buttonName}</div>
+    </div>
     );
   }
 }
+
+const buttons = buttonsWithName.map(button =>
+  <CherryBtn item={button} key={button.name} />
+);
 
 class ScreenPage extends React.Component {
   constructor(props) {
@@ -77,10 +90,6 @@ class ScreenPage extends React.Component {
       ],
     }
   };
-  renderCherryBtn(i) {
-      return <CherryBtn value={i} />;
-  }
-
   renderCherryBtnRow(i) {
     // Takes the row number as it's argument, then returns 4 buttons.
     const start = i * 4;
