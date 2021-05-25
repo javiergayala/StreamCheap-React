@@ -89,4 +89,8 @@ function App() {
   );
 }
 
+function ActivateZoom() {
+
+}
+
 export default App;

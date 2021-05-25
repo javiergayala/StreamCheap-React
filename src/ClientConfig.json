@@ -1,0 +1,47 @@
+{
+  "buttons": {
+    "Zoom": {
+      "iconCat": "fas",
+      "iconName": "video",
+      "iconSize": "3x",
+      "buttonName": "Zoom"
+    },
+    "Teams": {
+      "iconCat": "fas",
+      "iconName": "users",
+      "buttonName": "Teams"
+    },
+    "iMessage": {
+      "iconCat": "fas",
+      "iconName": "comment-dots",
+      "buttonName": "iMessage"
+    },
+    "iTerm": {
+      "iconCat": "fas",
+      "iconName": "terminal",
+      "buttonName": "iTerm"
+    },
+    "Firefox": {
+      "iconCat": "fab",
+      "iconName": "firefox-browser",
+      "buttonName": "Firefox"
+    },
+    "Safari": {
+      "iconCat": "fab",
+      "iconName": "safari",
+      "buttonName": "Safari"
+    },
+    "Screensaver": {
+      "iconCat": "fas",
+      "iconName": "lock",
+      "buttonName": "Screensaver",
+      "backgroundTheme": "danger"
+    },
+    "Alt": {
+      "iconCat": "fas",
+      "iconName": "jedi",
+      "buttonName": "Alt",
+      "backgroundTheme": "success"
+    }
+  }
+}
