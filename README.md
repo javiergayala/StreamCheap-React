@@ -1,6 +1,10 @@
-# Getting Started with Create React App
+# Getting Started with StreamCheap-React
+
+![](screenshots/mock-up.png)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+This is my attempt at creating a screen-based client that will function as a Macro Keyboard similar to the [elgato Stream Deck](https://www.elgato.com/en/stream-deck).  My goal is to create a front-end that can be displayed on my tablet or phone that I can use when I am away from my desk and duplicate the functionality that I have via my physical macro keyboard without having to lug it around with me.  This repo contains only the client code.  The actions taken by pressing the buttons will be performed either server-side or via a dedicated program.
 
 ## Available Scripts
 
