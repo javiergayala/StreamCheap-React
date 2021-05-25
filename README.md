@@ -6,6 +6,14 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 This is my attempt at creating a screen-based client that will function as a Macro Keyboard similar to the [elgato Stream Deck](https://www.elgato.com/en/stream-deck).  My goal is to create a front-end that can be displayed on my tablet or phone that I can use when I am away from my desk and duplicate the functionality that I have via my physical macro keyboard without having to lug it around with me.  This repo contains only the client code.  The actions taken by pressing the buttons will be performed either server-side or via a dedicated program.
 
+### Additional Requirements
+
+The way that I have this configured currently is to use [BetterTouchTool](https://folivora.ai) as my backend.  It is how I have receive the keystrokes from my physical macro keyboard.  Once it receives them, it launches the actions defined for each keystroke.  One of the capabilities of BTT is an [integrated webserver](https://docs.folivora.ai/docs/1104_webserver.html) that can run the actions via HTTP requests.  Therefore, each of these "buttons" in the client makes a call to that API to launch the actions.
+
+### Config
+
+The configuration is performed via the `ClientConfig.json` file.
+
 ## Available Scripts
 
 In the project directory, you can run:

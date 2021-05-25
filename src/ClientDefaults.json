@@ -3,5 +3,7 @@
         "backgroundTheme": "primary",
         "textTheme": "white",
         "iconSize": "3x"
-    }
+    },
+    "backendPort": "49438",
+    "backendUri": "/execute_assigned_actions_for_trigger/?uuid="
 }

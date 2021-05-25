@@ -1,6 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
+import axios from 'axios';
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fab } from '@fortawesome/free-brands-svg-icons'
 import { fas } from '@fortawesome/free-solid-svg-icons'
@@ -29,19 +30,9 @@ const buttonsWithName = Object.keys(ClientConfig.buttons).map(function(key) {
   button.class = 'btn btn-' + button.backgroundTheme;
   button.colClass = 'col border bg-' + button.backgroundTheme;
   button.txtClass = 'd-block text-' + button.textTheme;
+  button.reqUri = 'http://' + window.location.hostname + ':' + ClientDefaults.backendPort + ClientDefaults.backendUri + button.triggerId
   return button;
 });
-
-// const buttons = buttonsWithName.map(item =>
-//   <div class={item.colClass}>
-//       <button type="button" key={item.name} class={item.class}>
-//           <FontAwesomeIcon icon={[item.iconCat, item.iconName]} size={item.iconSize} />
-//       </button>
-//       <div class={item.txtClass}>{item.buttonName}</div>
-//   </div>
-// );
-
-
 
 class CherryBtn extends React.Component {
   constructor(props) {
@@ -52,6 +43,12 @@ class CherryBtn extends React.Component {
   }
 
   handleClick() {
+    console.log(this.props.item.reqUri);
+    axios.get(this.props.item.reqUri);
+    // axios.get(this.props.item.reqUri).then(res => {
+    //   const response = res.data;
+    //   console.log('Response: ' + response);
+    // });
     console.log('clicked ' + this.props.item.name);
   }
 

@@ -4,38 +4,45 @@
       "iconCat": "fas",
       "iconName": "video",
       "iconSize": "3x",
-      "buttonName": "Zoom"
+      "buttonName": "Zoom",
+      "triggerId": "A3CC7303-114D-4911-9C34-56E6CDE617A4"
     },
     "Teams": {
       "iconCat": "fas",
       "iconName": "users",
-      "buttonName": "Teams"
+      "buttonName": "Teams",
+      "triggerId": "E1B7FAB0-5C15-48A4-AF20-020928BA1EBA"
     },
     "iMessage": {
       "iconCat": "fas",
       "iconName": "comment-dots",
-      "buttonName": "iMessage"
+      "buttonName": "iMessage",
+      "triggerId": "3C12E8CB-67CC-4A6D-9B80-137F74625BBB"
     },
     "iTerm": {
       "iconCat": "fas",
       "iconName": "terminal",
-      "buttonName": "iTerm"
+      "buttonName": "iTerm",
+      "triggerId": "869054AA-470D-4B00-8CB1-D03ADB54FD68"
     },
     "Firefox": {
       "iconCat": "fab",
       "iconName": "firefox-browser",
-      "buttonName": "Firefox"
+      "buttonName": "Firefox",
+      "triggerId": "B54C6978-38B7-4EE4-83ED-ADC426FC0F06"
     },
     "Safari": {
       "iconCat": "fab",
       "iconName": "safari",
-      "buttonName": "Safari"
+      "buttonName": "Safari",
+      "triggerId": "73CA42DE-59A9-4F2F-ABDF-A6D5AB9DC0BA"
     },
     "Screensaver": {
       "iconCat": "fas",
       "iconName": "lock",
       "buttonName": "Screensaver",
-      "backgroundTheme": "danger"
+      "backgroundTheme": "danger",
+      "triggerId": "24210DB6-F6B3-4D22-A3E8-D62B82155945"
     },
     "Alt": {
       "iconCat": "fas",
