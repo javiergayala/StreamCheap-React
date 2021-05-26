@@ -50,5 +50,21 @@
       "buttonName": "Alt",
       "backgroundTheme": "success"
     }
+  },
+  "globalButtons": {
+    "mute": {
+      "iconCat": "fas",
+      "iconName": "volume-mute",
+      "triggerId": "4ADB2EF0-1563-40BF-8F09-280CE45C03BF",
+      "buttonName": "mute",
+      "buttonType": "outline-danger"
+    },
+    "unmute": {
+      "iconcat": "fas",
+      "iconName": "volume-up",
+      "triggerId": "D06962B5-E25A-46D1-A1F8-8C185FECEEB8",
+      "buttonName": "unmute",
+      "buttonType": "outline-success"
+    }
   }
 }

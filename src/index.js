@@ -6,6 +6,7 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { fab } from '@fortawesome/free-brands-svg-icons'
 import { fas } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import VolumeButton from './VolumeButton.js'
 import './index.css';
 import './StreamCheap.css';
 import ClientConfig from "./ClientConfig.json";
@@ -30,7 +31,16 @@ const buttonsWithName = Object.keys(ClientConfig.buttons).map(function(key) {
   button.class = 'btn btn-' + button.backgroundTheme;
   button.colClass = 'col border bg-' + button.backgroundTheme;
   button.txtClass = 'd-block text-' + button.textTheme;
-  button.reqUri = 'http://' + window.location.hostname + ':' + ClientDefaults.backendPort + ClientDefaults.backendUri + button.triggerId
+  button.reqUri = [
+    window.location.protocol,
+    '//',
+    window.location.hostname,
+    ':',
+    ClientDefaults.backendPort,
+    ClientDefaults.backendUri,
+    button.triggerId
+  ].join('');
+
   return button;
 });
 
@@ -45,10 +55,6 @@ class CherryBtn extends React.Component {
   handleClick() {
     console.log(this.props.item.reqUri);
     axios.get(this.props.item.reqUri);
-    // axios.get(this.props.item.reqUri).then(res => {
-    //   const response = res.data;
-    //   console.log('Response: ' + response);
-    // });
     console.log('clicked ' + this.props.item.name);
   }
 
@@ -59,11 +65,11 @@ class CherryBtn extends React.Component {
 
   render (props) {
     return (
-        <div class={this.props.item.colClass} key={this.props.item.name}>
-        <button type="button" class={this.props.item.class} onClick={this.handleClick}>
+        <div className={this.props.item.colClass} key={this.props.item.name}>
+        <button type="button" className={this.props.item.class} onClick={this.handleClick}>
             <FontAwesomeIcon icon={[this.props.item.iconCat, this.props.item.iconName]} size={this.props.item.iconSize} />
         </button>
-        <div class={this.props.item.txtClass} key={'btnTxt-' + this.props.item.name}>{this.props.item.buttonName}</div>
+        <div className={this.props.item.txtClass} key={'btnTxt-' + this.props.item.name}>{this.props.item.buttonName}</div>
     </div>
     );
   }
@@ -85,7 +91,8 @@ class ScreenPage extends React.Component {
           buttonName: 'UNKNOWN',
         },
       ],
-    }
+    };
+    this.handleClick = this.handleClick.bind(this);
   };
   renderCherryBtnRow(i) {
     // Takes the row number as it's argument, then returns 4 buttons.
@@ -94,34 +101,43 @@ class ScreenPage extends React.Component {
     return buttons.slice(start, end);
   }
 
+  handleClick(c) {
+    const reqUri = [
+      window.location.protocol,
+      '//',
+      window.location.hostname,
+      ':',
+      ClientDefaults.backendPort,
+      ClientDefaults.backendUri,
+      c
+    ].join('');
+    alert(reqUri);
+  }
+
   render() {
     return (
-      <div class="container">
-        <div class="row justify-content-center">
+      <div className="container">
+        <div className="row justify-content-center">
           {this.renderCherryBtnRow(0)}
         </div>
-        <div class="row justify-content-center">
+        <div className="row justify-content-center">
           {this.renderCherryBtnRow(1)}
         </div>
-        <div class="row align-items-center">
-        <div class="col"><input type="range" class="form-range" id="volumeSlider"></input></div>
+        <div className="row align-items-center">
+        <div className="col"><input type="range" className="form-range" id="volumeSlider"></input></div>
         </div>
-        <div class="row align-items-center display-6">
-        <div class="col bg-light">
-        <button type="button" class="btn btn-primary disabled">
+        <div className="row align-items-center display-6">
+        <div className="col">
+        <button type="button" className="btn btn-primary disabled">
         <FontAwesomeIcon icon={['fas', 'angle-left']} size="3x" />
         </button>
         </div>
-        <div class="col bg-light">
-        <button type="button" class="btn btn-outline-danger">
-        <FontAwesomeIcon icon={['fas', 'volume-mute']} size="2x" />
-        </button>
-        <button type="button" class="btn btn-outline-success disabled">
-        <FontAwesomeIcon icon={['fas', 'volume-up']} size="2x" />
-        </button>
+        <div className="col">
+          <VolumeButton btn={ClientConfig.globalButtons.mute} key={ClientConfig.globalButtons.mute.buttonName} />
+          <VolumeButton btn={ClientConfig.globalButtons.unmute} key={ClientConfig.globalButtons.unmute.buttonName} />
         </div>
-        <div class="col bg-light">
-        <button type="button" class="btn btn-primary">
+        <div className="col">
+        <button type="button" className="btn btn-primary disabled">
         <FontAwesomeIcon icon={['fas', 'angle-right']} size="3x" />
         </button>
         </div>
@@ -135,8 +151,8 @@ class StreamCheap extends React.Component {
   render() {
     return (
       <div className="StreamCheap">
-        <div class="container-sm">
-          <h1 class="display-6">Stream Cheap</h1>
+        <div className="container-sm">
+          <h1 className="display-6">Stream Cheap</h1>
           <ScreenPage />
         </div>
       </div>
